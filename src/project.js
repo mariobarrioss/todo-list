@@ -1,20 +1,15 @@
 class Project {
-  constructor(name, dueDate, items = []) {
+  constructor(name, todos = []) {
     this.name = name;
-    this.dueDate = dueDate;
-    this.items = items;
+    this.todos = todos;
   }
 
   updateName(name) {
     this.name = name;
   }
 
-  updateDueDate(dueDate) {
-    this.dueDate = dueDate;
-  }
-
-  updateItems(items) {
-    this.items.push(items);
+  updateTodos(todo) {
+    this.todos.push(JSON.stringify(todo));
   }
 }
 
