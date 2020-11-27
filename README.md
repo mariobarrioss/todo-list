@@ -1,8 +1,6 @@
 # TODO LIST
 
-> The purpose of this project is to hone our skills in API access with asynchronous functions in javascript. In order to do this I have built a simple web application which
-  allows the user to appraise themselves of the weather conditions in a city of their choice. OpenWeatherMap API was used for the weather data for this project.
-  <img src="./docs/zealous-goodall-ceb90e.netlify.app_(Galaxy S5) -New York City.png">
+> The purpose of this project is to build a todo list app in order to showcase our mastery over object oriented design in javascript. 
   
 ## :hammer: Built With
 
@@ -13,7 +11,7 @@
 
 ## Live Demo
 
-[Weather App](https://zealous-goodall-ceb90e.netlify.app/)
+[Todo App](https://livedemo.com)
 
 
 ## Getting Started
@@ -23,7 +21,7 @@ To get a local copy up and running follow these simple steps.
 ### Prerequisites
   
   You need to have git installed on your local system.
-  You can clone this project with the command `$ git clone https://www.github.com/rsundar/weather-app.git`.
+  You can clone this project with the command `$ git clone https://www.github.com/mariobarrioss/todo-list.git`.
   For this project you also require NPM installed on your machine.
   
 ### Setup
@@ -56,6 +54,13 @@ To get a local copy up and running follow these simple steps.
 👤 **Rohan Sundar**
 
 - GitHub: [@rsundar](https://github.com/rsundar)
+- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
+- LinkedIn: [LinkedIn](https://linkedin.com/linkedinhandle)
+
+
+👤 **Mario Barioss**
+
+- GitHub: [@mariobarrioss](https://github.com/mariobarrioss)
 - Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
 - LinkedIn: [LinkedIn](https://linkedin.com/linkedinhandle)
 
