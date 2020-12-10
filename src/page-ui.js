@@ -71,11 +71,9 @@ function displayProjects() {
   const projects = retrieveProjects();
 
   projects.forEach(project => {
-    const item = document.createElement('li');
     const { name } = project;
-    const itemContent = `<a>${name}</a>`;
-    item.insertAdjacentHTML('beforeend', itemContent);
-    projectList.appendChild(item);
+    const itemContent = `<li><a>${name}</a></li>`;
+    projectList.insertAdjacentHTML('beforeend', itemContent);
   });
 }
 
