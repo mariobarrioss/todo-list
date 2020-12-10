@@ -1,5 +1,5 @@
 import './assets/style.css';
-import * as Page from './page-ui.js';
+import * as Page from './page-ui';
 
 Page.createLayout();
 Page.displayProjects();
