@@ -1,6 +1,6 @@
 import { retrieveProjects } from './localStorage';
 
-export default function createLayout() {
+function createLayout() {
   const pageContent = document.querySelector('#page-content');
   const layout = `
     <section class="hero is-medium has-bg-img">
@@ -66,7 +66,7 @@ export default function createLayout() {
   pageContent.insertAdjacentHTML('beforeend', layout);
 }
 
-export function displayProjects() {
+function displayProjects() {
   const projectList = document.querySelector('#project-list');
   const projects = retrieveProjects();
 
@@ -78,3 +78,8 @@ export function displayProjects() {
     projectList.appendChild(item);
   });
 }
+
+export {
+  createLayout,
+  displayProjects,
+};

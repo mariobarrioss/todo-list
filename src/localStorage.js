@@ -1,4 +1,4 @@
-import * as Project from './project';
+import Project from './project';
 
 const projectList = localStorage.getItem('projects') ? JSON.parse(localStorage.getItem('projects')) : [];
 

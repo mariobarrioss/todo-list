@@ -1,4 +1,4 @@
-class Project {
+export default class Project {
   constructor(name, todos = []) {
     this.name = name;
     this.todos = todos;
@@ -12,5 +12,3 @@ class Project {
     this.todos.push(JSON.stringify(todo));
   }
 }
-
-export default Project;
