@@ -8,7 +8,7 @@ const storeProjectList = () => {
   localStorage.setItem('projects', JSON.stringify(projectList));
 };
 
-const addProject = (project) => {
+const addProject = project => {
   projectList.push(project);
   storeProjectList();
 };

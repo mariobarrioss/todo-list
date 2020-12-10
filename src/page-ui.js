@@ -1,3 +1,5 @@
+import { retrieveProjects } from './localStorage';
+
 export default function createLayout() {
   const pageContent = document.querySelector('#page-content');
   const layout = `
@@ -49,7 +51,7 @@ export default function createLayout() {
               <p class="menu-label">
                 projects
               </p>
-              <ul class="menu-list">
+              <ul id="project-list" class="menu-list">
               </ul>
             </aside>
           </div>
@@ -62,4 +64,17 @@ export default function createLayout() {
       </div>
     </section>`;
   pageContent.insertAdjacentHTML('beforeend', layout);
+}
+
+export function displayProjects() {
+  const projectList = document.querySelector('#project-list');
+  const projects = retrieveProjects();
+
+  projects.forEach(project => {
+    const item = document.createElement('li');
+    const { name } = project;
+    const itemContent = `<a>${name}</a>`;
+    item.insertAdjacentHTML('beforeend', itemContent);
+    projectList.appendChild(item);
+  });
 }
