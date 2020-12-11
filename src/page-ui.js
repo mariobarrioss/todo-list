@@ -191,9 +191,9 @@ function saveTodo() {
   const projectList = retrieveProjects();
 
   const key = projectList.find(element => element.name === project);
-  console.log("Key: ", key, typeof(key));
   const todo = new Todo(title, description, dueDate, priority);
-  key.updateTodos(todo);
+  key.todos.push(todo);
+  console.log('Key: ', key); 
 }
 
 function formToggle(form) {
