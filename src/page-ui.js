@@ -159,9 +159,24 @@ function addNewTodoForm() {
   formSection.insertAdjacentHTML('beforeend', newTodoForm);
 }
 
+function formToggle(form) {
+  form.classList.toggle('is-hidden');
+}
+
+function setButtons() {
+  const newProjectButton = document.querySelector('#new-project-button');
+  const newTodoButton = document.querySelector('#new-todo-button');
+  const projectForm = document.querySelector('#project-form');
+  const todoForm = document.querySelector('#todo-form');
+
+  newProjectButton.addEventListener('click', () => formToggle(projectForm));
+  newTodoButton.addEventListener('click', () => formToggle(todoForm));
+}
+
 export {
   createLayout,
   displayProjects,
   addNewProjectForm,
   addNewTodoForm,
+  setButtons,
 };

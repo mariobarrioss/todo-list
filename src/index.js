@@ -5,3 +5,4 @@ Page.createLayout();
 Page.displayProjects();
 Page.addNewProjectForm();
 Page.addNewTodoForm();
+Page.setButtons();
