@@ -1,5 +1,6 @@
 import { retrieveProjects } from './localStorage';
 import Todo from './todo';
+import Project from './project';
 
 function createLayout() {
   const pageContent = document.querySelector('#page-content');
@@ -187,9 +188,12 @@ function saveTodo() {
   const priority = document.querySelector('[name="todo-priority"]').value;
   const project = document.querySelector('[name="project-list"]').value;
 
-  const todo = new Todo(title, description, dueDate, priority);
-  
+  const projectList = retrieveProjects();
 
+  const key = projectList.find(element => element.name === project);
+  console.log("Key: ", key, typeof(key));
+  const todo = new Todo(title, description, dueDate, priority);
+  key.updateTodos(todo);
 }
 
 function formToggle(form) {
@@ -201,12 +205,14 @@ function setButtons() {
   const newTodoButton = document.querySelector('#new-todo-button');
   const projectForm = document.querySelector('#project-form');
   const todoForm = document.querySelector('#todo-form');
+  const saveTodoButton = document.querySelector('#save-todo-button');
 
   newProjectButton.addEventListener('click', () => formToggle(projectForm));
   newTodoButton.addEventListener('click', () => {
     formToggle(todoForm);
     generateDropdown();
   });
+  saveTodoButton.addEventListener('click', () => saveTodo());
 }
 
 export {
