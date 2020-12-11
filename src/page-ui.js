@@ -41,6 +41,11 @@ function createLayout() {
           </h2>
         </div>
       </div>
+
+      <div class="hero-foot">
+        <div id="form-section" class="container">
+        </div>
+      </div>
     </section>
 
     <section class="section">
@@ -77,7 +82,86 @@ function displayProjects() {
   });
 }
 
+function addNewProjectForm() {
+  const formSection = document.querySelector('#form-section');
+  const newProjectForm = `
+    <section class="section">
+      <div class="container">
+        <div id="project-form" class="is-hidden">
+
+          <div class="field">
+            <label class="label">Title</label>
+            <div class="control">
+              <input class="input" name="project-name" type="text" placeholder="Project Name">
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="control">
+              <button id="save-project-button" class="button is-success">Save Project</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>`;
+  formSection.insertAdjacentHTML('beforeend', newProjectForm);
+}
+
+function addNewTodoForm() {
+  const formSection = document.querySelector('#form-section');
+  const newTodoForm = `
+  <section class="section">
+      <div class="container">
+        <div id="todo-form" class="is-hidden">
+
+          <div class="field">
+            <label class="label">Title</label>
+            <div class="control">
+              <input class="input" name="todo-title" type="text" placeholder="Title">
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">Description</label>
+            <div class="control">
+              <textarea class="textarea" name="todo-description" placeholder="Description"></textarea>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">Pages</label>
+            <div class="control">
+              <input class="input" name="todo-dueDate" type="date" placeholder="Due date">
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">Priority</label>
+            <div class="control">
+              <div class="select">
+                <select name="todo-priority">
+                  <option value="high">High</option>
+                  <option value="normal">Normal</option>
+                  <option value="low">Low</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="control">
+              <button id="save-todo-button" class="button is-success">Save Todo</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>`;
+  formSection.insertAdjacentHTML('beforeend', newTodoForm);
+}
+
 export {
   createLayout,
   displayProjects,
+  addNewProjectForm,
+  addNewTodoForm,
 };
