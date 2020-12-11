@@ -1,4 +1,5 @@
 import { retrieveProjects } from './localStorage';
+import Todo from './todo';
 
 function createLayout() {
   const pageContent = document.querySelector('#page-content');
@@ -147,6 +148,16 @@ function addNewTodoForm() {
               </div>
             </div>
           </div>
+          
+          <div class="field">
+            <label class="label">Project</label>
+            <div class="control">
+                <div class="select">
+                  <select id="dropdown" name="project-list">
+                  </select>
+                </div>
+            </div>
+          </div>
 
           <div class="field">
             <div class="control">
@@ -157,6 +168,28 @@ function addNewTodoForm() {
       </div>
     </section>`;
   formSection.insertAdjacentHTML('beforeend', newTodoForm);
+}
+
+function generateDropdown() {
+  const select = document.getElementById('dropdown');
+  const list = retrieveProjects();
+  list.forEach(project => {
+    const projectName = project.name;
+    const option = `<option value=${projectName}>${projectName}</option>`;
+    select.insertAdjacentHTML('beforeend', option);
+  });
+}
+
+function saveTodo() {
+  const title = document.querySelector('[name="todo-title"]').value;
+  const description = document.querySelector('[name="todo-description"]').value;
+  const dueDate = document.querySelector('[name="todo-dueDate"]').value;
+  const priority = document.querySelector('[name="todo-priority"]').value;
+  const project = document.querySelector('[name="project-list"]').value;
+
+  const todo = new Todo(title, description, dueDate, priority);
+  
+
 }
 
 function formToggle(form) {
@@ -170,7 +203,10 @@ function setButtons() {
   const todoForm = document.querySelector('#todo-form');
 
   newProjectButton.addEventListener('click', () => formToggle(projectForm));
-  newTodoButton.addEventListener('click', () => formToggle(todoForm));
+  newTodoButton.addEventListener('click', () => {
+    formToggle(todoForm);
+    generateDropdown();
+  });
 }
 
 export {
