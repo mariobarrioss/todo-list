@@ -2,7 +2,7 @@ import Project from './project';
 
 const projectList = localStorage.getItem('projects') ? JSON.parse(localStorage.getItem('projects')) : [];
 
-const defaultProject = new Project('default');
+const { name } = JSON.parse(localStorage.getItem('projects'))[0];
 
 const storeProjectList = () => {
   localStorage.setItem('projects', JSON.stringify(projectList));
@@ -13,7 +13,14 @@ const addProject = project => {
   storeProjectList();
 };
 
-addProject(defaultProject);
+const checkDefaultProject = x => {
+  if (x !== 'default') {
+    const defaultProject = new Project('default');
+    addProject(defaultProject);
+  }
+};
+
+checkDefaultProject(name);
 
 const retrieveProjects = () => projectList;
 
