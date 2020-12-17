@@ -2,7 +2,7 @@ import { retrieveProjects } from './localStorage';
 import Todo from './todo';
 import Project from './project';
 
-function createLayout() {
+const createLayout = () => {
   const pageContent = document.querySelector('#page-content');
   const layout = `
     <section class="hero is-medium has-bg-img">
@@ -71,9 +71,9 @@ function createLayout() {
       </div>
     </section>`;
   pageContent.insertAdjacentHTML('beforeend', layout);
-}
+};
 
-function displayProjects() {
+const displayProjects = () => {
   const projectList = document.querySelector('#project-list');
   const projects = retrieveProjects();
 
@@ -82,9 +82,9 @@ function displayProjects() {
     const itemContent = `<li><a>${name}</a></li>`;
     projectList.insertAdjacentHTML('beforeend', itemContent);
   });
-}
+};
 
-function addNewProjectForm() {
+const addNewProjectForm = () => {
   const formSection = document.querySelector('#form-section');
   const newProjectForm = `
     <section class="section">
@@ -107,9 +107,9 @@ function addNewProjectForm() {
       </div>
     </section>`;
   formSection.insertAdjacentHTML('beforeend', newProjectForm);
-}
+};
 
-function addNewTodoForm() {
+const addNewTodoForm = () => {
   const formSection = document.querySelector('#form-section');
   const newTodoForm = `
   <section class="section">
@@ -169,9 +169,9 @@ function addNewTodoForm() {
       </div>
     </section>`;
   formSection.insertAdjacentHTML('beforeend', newTodoForm);
-}
+};
 
-function generateDropdown() {
+const generateDropdown = () => {
   const select = document.getElementById('dropdown');
   const list = retrieveProjects();
   list.forEach(project => {
@@ -179,9 +179,9 @@ function generateDropdown() {
     const option = `<option value=${projectName}>${projectName}</option>`;
     select.insertAdjacentHTML('beforeend', option);
   });
-}
+};
 
-function saveTodo() {
+const saveTodo = () => {
   const title = document.querySelector('[name="todo-title"]').value;
   const description = document.querySelector('[name="todo-description"]').value;
   const dueDate = document.querySelector('[name="todo-dueDate"]').value;
@@ -193,14 +193,13 @@ function saveTodo() {
   const key = projectList.find(element => element.name === project);
   const todo = new Todo(title, description, dueDate, priority);
   key.todos.push(todo);
-  console.log('Key: ', key); 
-}
+};
 
-function formToggle(form) {
+const formToggle = form => {
   form.classList.toggle('is-hidden');
-}
+};
 
-function setButtons() {
+const setButtons = () => {
   const newProjectButton = document.querySelector('#new-project-button');
   const newTodoButton = document.querySelector('#new-todo-button');
   const projectForm = document.querySelector('#project-form');
@@ -213,7 +212,7 @@ function setButtons() {
     generateDropdown();
   });
   saveTodoButton.addEventListener('click', () => saveTodo());
-}
+};
 
 export {
   createLayout,
