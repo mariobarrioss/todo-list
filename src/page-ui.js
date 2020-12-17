@@ -131,7 +131,7 @@ const addNewTodoForm = () => {
           </div>
 
           <div class="field">
-            <label class="label">Pages</label>
+            <label class="label">Due Date</label>
             <div class="control">
               <input class="input" name="todo-dueDate" type="date" placeholder="Due date">
             </div>
