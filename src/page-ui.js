@@ -79,9 +79,72 @@ const displayProjects = () => {
   const projects = retrieveProjects();
 
   projects.forEach(project => {
+    const index = projects.indexOf(project);
     const { name } = project;
-    const itemContent = `<li><a>${name}</a></li>`;
+    const itemContent = `<li><a class="project-link" data-project-index="${index}">${name}</a></li>`;
     projectList.insertAdjacentHTML('beforeend', itemContent);
+  });
+};
+
+const displayTodos = project => {
+  const todoList = document.querySelector('#todo-list-content');
+  todoList.innerHTML = '';
+
+  if (project.todos.length === 0) {
+    return;
+  }
+
+  project.todos.forEach(todo => {
+    const {
+      title, description, dueDate, priority,
+    } = todo;
+    let priorityColor;
+    if (priority === 'high') {
+      priorityColor = 'is-danger';
+    } else if (priority === 'normal') {
+      priorityColor = 'is-warning';
+    } else {
+      priorityColor = 'is-success';
+    }
+
+    const todoContent = `<div class="card mb-5">
+                            <header class="card-header">
+                              <p class="card-header-title">
+                               ${title} 
+                              </p>
+                              <a href="#" class="card-header-icon" aria-label="more options">
+                                <span class="icon">
+                                  <i class="fas fa-angle-down" aria-hidden="true"></i>
+                                </span>
+                              </a>
+                            </header>
+                            <div class="card-content">
+                              <div class="content">
+                                ${description}
+                                <br>
+                                <time datetime="2016-1-1">${dueDate}</time>
+                                <br>
+                                <span class="tag ${priorityColor} is-medium">${priority}</span>
+                              </div>
+                            </div>
+                            <footer class="card-footer">
+                              <a href="#" class="card-footer-item">Edit</a>
+                              <a href="#" class="card-footer-item">Delete</a>
+                            </footer>
+                          </div>`;
+    todoList.insertAdjacentHTML('beforeend', todoContent);
+  });
+};
+
+const addProjectLinks = () => {
+  const projectList = retrieveProjects();
+  const projectLinks = document.querySelectorAll('.project-link');
+  projectLinks.forEach(link => {
+    link.onclick = () => {
+      const { projectIndex } = link.dataset;
+      const project = projectList[projectIndex];
+      displayTodos(project);
+    };
   });
 };
 
@@ -215,6 +278,7 @@ const saveProject = () => {
   const name = document.querySelector('[name="project-name"]').value;
   addProject(new Project(name));
   displayProjects();
+  addProjectLinks();
   projectFormReset();
 };
 
@@ -249,4 +313,5 @@ export {
   addNewProjectForm,
   addNewTodoForm,
   setButtons,
+  addProjectLinks,
 };

@@ -6,3 +6,4 @@ Page.displayProjects();
 Page.addNewProjectForm();
 Page.addNewTodoForm();
 Page.setButtons();
+Page.addProjectLinks();
