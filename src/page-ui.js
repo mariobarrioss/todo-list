@@ -1,4 +1,4 @@
-import { retrieveProjects } from './localStorage';
+import { retrieveProjects, addProject } from './localStorage';
 import Todo from './todo';
 import Project from './project';
 
@@ -181,6 +181,10 @@ const generateDropdown = () => {
   });
 };
 
+const formToggle = form => {
+  form.classList.toggle('is-hidden');
+};
+
 const saveTodo = () => {
   const title = document.querySelector('[name="todo-title"]').value;
   const description = document.querySelector('[name="todo-description"]').value;
@@ -195,8 +199,10 @@ const saveTodo = () => {
   key.todos.push(todo);
 };
 
-const formToggle = form => {
-  form.classList.toggle('is-hidden');
+const saveProject = () => {
+  const name = document.querySelector('[name="project-name"]').value;
+  addProject(new Project(name));
+  displayProjects();
 };
 
 const setButtons = () => {
@@ -204,6 +210,7 @@ const setButtons = () => {
   const newTodoButton = document.querySelector('#new-todo-button');
   const projectForm = document.querySelector('#project-form');
   const todoForm = document.querySelector('#todo-form');
+  const saveProjectButton = document.querySelector('#save-project-button');
   const saveTodoButton = document.querySelector('#save-todo-button');
 
   newProjectButton.addEventListener('click', () => formToggle(projectForm));
@@ -211,6 +218,8 @@ const setButtons = () => {
     formToggle(todoForm);
     generateDropdown();
   });
+
+  saveProjectButton.addEventListener('click', () => saveProject());
   saveTodoButton.addEventListener('click', () => saveTodo());
 };
 
