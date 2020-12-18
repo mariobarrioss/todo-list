@@ -237,10 +237,11 @@ const addNewTodoForm = () => {
 
 const generateDropdown = () => {
   const select = document.getElementById('dropdown');
+  select.innerHTML = '';
   const list = retrieveProjects();
   list.forEach(project => {
     const projectName = project.name;
-    const option = `<option value=${projectName}>${projectName}</option>`;
+    const option = `<option value="${projectName}">${projectName}</option>`;
     select.insertAdjacentHTML('beforeend', option);
   });
 };
