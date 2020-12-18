@@ -1,4 +1,4 @@
-import { retrieveProjects, addProject } from './localStorage';
+import { retrieveProjects, addProject, storeProjectList } from './localStorage';
 import Todo from './todo';
 import Project from './project';
 
@@ -207,6 +207,7 @@ const saveTodo = () => {
   const key = projectList.find(element => element.name === project);
   const todo = new Todo(title, description, dueDate, priority);
   key.todos.push(todo);
+  storeProjectList();
   todoFormReset();
 };
 

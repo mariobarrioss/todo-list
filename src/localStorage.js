@@ -38,4 +38,5 @@ export {
   retrieveProjects,
   updateProject,
   deleteProject,
+  storeProjectList,
 };
