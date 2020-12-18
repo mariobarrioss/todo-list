@@ -75,6 +75,7 @@ const createLayout = () => {
 
 const displayProjects = () => {
   const projectList = document.querySelector('#project-list');
+  projectList.innerHTML = '';
   const projects = retrieveProjects();
 
   projects.forEach(project => {
