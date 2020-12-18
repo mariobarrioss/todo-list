@@ -186,6 +186,15 @@ const formToggle = form => {
   form.classList.toggle('is-hidden');
 };
 
+const projectFormReset = () => {
+  document.querySelector('[name="project-name"]').value = '';
+};
+
+const todoFormReset = () => {
+  document.querySelector('[name="todo-title"]').value = '';
+  document.querySelector('[name="todo-description"]').value = '';
+};
+
 const saveTodo = () => {
   const title = document.querySelector('[name="todo-title"]').value;
   const description = document.querySelector('[name="todo-description"]').value;
@@ -198,12 +207,14 @@ const saveTodo = () => {
   const key = projectList.find(element => element.name === project);
   const todo = new Todo(title, description, dueDate, priority);
   key.todos.push(todo);
+  todoFormReset();
 };
 
 const saveProject = () => {
   const name = document.querySelector('[name="project-name"]').value;
   addProject(new Project(name));
   displayProjects();
+  projectFormReset();
 };
 
 const setButtons = () => {
@@ -220,8 +231,15 @@ const setButtons = () => {
     generateDropdown();
   });
 
-  saveProjectButton.addEventListener('click', () => saveProject());
-  saveTodoButton.addEventListener('click', () => saveTodo());
+  saveProjectButton.addEventListener('click', () => {
+    saveProject();
+    formToggle(projectForm);
+  });
+
+  saveTodoButton.addEventListener('click', () => {
+    saveTodo();
+    formToggle(todoForm);
+  });
 };
 
 export {
