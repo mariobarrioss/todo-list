@@ -1,7 +1,7 @@
 # TODO LIST
 
 > The purpose of this project is to build a todo list app in order to showcase our mastery over object oriented design in javascript. 
-![screenshot](./docs/screenshot.jpg)
+![screenshot](./docs/screenshot.png)
 
 ## :hammer: Built With
 
