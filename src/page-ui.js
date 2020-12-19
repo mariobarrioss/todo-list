@@ -108,7 +108,7 @@ const displayTodos = project => {
       priorityColor = 'is-success';
     }
 
-    const todoContent = `<div data-todo-index"${todoIndex}" class="card mb-5">
+    const todoContent = `<div data-todo-index="${todoIndex}" class="card mb-5">
                             <header class="card-header">
                               <p class="card-header-title">
                                ${title} 
