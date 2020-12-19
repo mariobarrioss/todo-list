@@ -61,8 +61,8 @@ To get a local copy up and running follow these simple steps.
 👤 **Mario Barioss**
 
 - GitHub: [@mariobarrioss](https://github.com/mariobarrioss)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/linkedinhandle)
+- Twitter: [@twitterhandle](https://twitter.com/@mario_barrioss)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/mariobarrioss)
 
 ## 🤝 Contributing
 
