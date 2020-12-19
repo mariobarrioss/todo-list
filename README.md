@@ -11,7 +11,7 @@
 
 ## Live Demo
 
-[Todo App](https://livedemo.com)
+[Todo App](https://flamboyant-brahmagupta-de97f9.netlify.app/)
 
 
 ## Getting Started
