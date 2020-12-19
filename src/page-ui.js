@@ -98,6 +98,7 @@ const displayTodos = project => {
     const {
       title, description, dueDate, priority,
     } = todo;
+    const todoIndex = project.todos.indexOf(todo);
     let priorityColor;
     if (priority === 'high') {
       priorityColor = 'is-danger';
@@ -107,7 +108,7 @@ const displayTodos = project => {
       priorityColor = 'is-success';
     }
 
-    const todoContent = `<div class="card mb-5">
+    const todoContent = `<div data-todo-index"${todoIndex}" class="card mb-5">
                             <header class="card-header">
                               <p class="card-header-title">
                                ${title} 
@@ -129,10 +130,31 @@ const displayTodos = project => {
                             </div>
                             <footer class="card-footer">
                               <a href="#" class="card-footer-item">Edit</a>
-                              <a href="#" class="card-footer-item">Delete</a>
+                              <a href="#" data-project-name="${project.name}" data-todo-index="${todoIndex}" class="card-footer-item delete-btn">Delete</a>
                             </footer>
                           </div>`;
     todoList.insertAdjacentHTML('beforeend', todoContent);
+  });
+};
+
+const removeTodo = (projectName, todoIndex) => {
+  const projectList = retrieveProjects();
+  const project = projectList.find(project => project.name === projectName);
+  project.todos.splice(todoIndex, 1);
+  storeProjectList();
+};
+
+const addDeleteListeners = () => {
+  const deleteButtons = document.querySelectorAll('.delete-btn');
+  deleteButtons.forEach(button => {
+    button.onclick = () => {
+      const { projectName, todoIndex } = button.dataset;
+      const targetTodo = document.querySelector(`div[data-todo-index="${todoIndex}"]`);
+      removeTodo(projectName, todoIndex);
+      document.querySelector('#todo-list-content').removeChild(targetTodo);
+      const project = retrieveProjects().find(project => project.name === projectName);
+      displayTodos(project);
+    };
   });
 };
 
@@ -144,6 +166,7 @@ const addProjectLinks = () => {
       const { projectIndex } = link.dataset;
       const project = projectList[projectIndex];
       displayTodos(project);
+      addDeleteListeners();
     };
   });
 };
