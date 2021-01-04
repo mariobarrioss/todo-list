@@ -184,6 +184,7 @@ const addNewProjectForm = () => {
               <input class="input" name="project-name" type="text" placeholder="Project Name">
             </div>
           </div>
+          <span id="project-error"></span>
 
           <div class="field">
             <div class="control">
@@ -220,7 +221,7 @@ const addNewTodoForm = () => {
           <div class="field">
             <label class="label">Due Date</label>
             <div class="control">
-              <input class="input" name="todo-dueDate" type="date" placeholder="Due date">
+              <input class="input" name="todo-dueDate" type="date" placeholder="MM/DD/YYYY">
             </div>
           </div>
 
@@ -246,6 +247,7 @@ const addNewTodoForm = () => {
                 </div>
             </div>
           </div>
+          <span id="todo-error"></span>
 
           <div class="field">
             <div class="control">
@@ -275,35 +277,61 @@ const formToggle = form => {
 
 const projectFormReset = () => {
   document.querySelector('[name="project-name"]').value = '';
+  document.querySelector('#project-error').textContent = '';
 };
 
 const todoFormReset = () => {
   document.querySelector('[name="todo-title"]').value = '';
   document.querySelector('[name="todo-description"]').value = '';
+  document.querySelector('#todo-error').textContent = '';
+};
+
+const validateProjectInput = name => !!name.match(/\S+/g);
+
+const validateTodoInput = (title, description, dueDate) => !!title.match(/\S+/g) && !!description.match(/\S+/g) && !!dueDate;
+
+const projectErrorMessage = () => {
+  const error = document.querySelector('#project-error');
+  error.textContent = 'Name is a required field!';
+  error.style.color = 'red';
+};
+
+const todoErrorMessage = () => {
+  const error = document.querySelector('#todo-error');
+  error.textContent = 'Title, Description and Due Date must be valid!';
+  error.style.color = 'red';
 };
 
 const saveTodo = () => {
   const title = document.querySelector('[name="todo-title"]').value;
   const description = document.querySelector('[name="todo-description"]').value;
   const dueDate = document.querySelector('[name="todo-dueDate"]').value;
-  const priority = document.querySelector('[name="todo-priority"]').value;
-  const project = document.querySelector('[name="project-list"]').value;
 
-  const projectList = retrieveProjects();
-
-  const key = projectList.find(element => element.name === project);
-  const todo = new Todo(title, description, dueDate, priority);
-  key.todos.push(todo);
-  storeProjectList();
-  todoFormReset();
+  if (validateTodoInput(title, description, dueDate)) {
+    const priority = document.querySelector('[name="todo-priority"]').value;
+    const project = document.querySelector('[name="project-list"]').value;
+    const projectList = retrieveProjects();
+    const key = projectList.find(element => element.name === project);
+    const todo = new Todo(title, description, dueDate, priority);
+    key.todos.push(todo);
+    storeProjectList();
+    todoFormReset();
+  } else {
+    todoErrorMessage();
+  }
 };
 
 const saveProject = () => {
   const name = document.querySelector('[name="project-name"]').value;
-  addProject(new Project(name));
-  displayProjects();
-  addProjectLinks();
-  projectFormReset();
+
+  if (validateProjectInput(name)) {
+    addProject(new Project(name));
+    displayProjects();
+    addProjectLinks();
+    projectFormReset();
+  } else {
+    projectErrorMessage();
+  }
 };
 
 const setButtons = () => {
