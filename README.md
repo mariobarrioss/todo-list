@@ -55,8 +55,6 @@ To get a local copy up and running follow these simple steps.
 👤 **Rohan Sundar**
 
 - GitHub: [@rsundar](https://github.com/rsundar)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/linkedinhandle)
 
 
 👤 **Mario Barioss**
