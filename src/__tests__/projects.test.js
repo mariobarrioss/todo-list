@@ -3,7 +3,8 @@ import Todo from '../todo';
 
 test('create a new project of type project', () => {
   const newProject = new Project('test Project');
-  expect(newProject instanceOf Project).toEqual(true);
+  let t = newProject instanceof Project;
+  expect(t).toEqual(true);
 });
 
 
