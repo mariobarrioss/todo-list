@@ -39,11 +39,18 @@ To get a local copy up and running follow these simple steps.
   
   To build the appplication the following command needs to be run in the terminal
   
-  `$ npm run buiid`
+  `$ npm run build`
   
 ### Run tests
   
-  There are no tests for this project.
+ Test suite for:
+ - localStorage module
+ - Project module
+ - Todo module
+
+To run the tests type the following command in the terminal
+
+`$ npm test`
   
 ### Deployment
   
