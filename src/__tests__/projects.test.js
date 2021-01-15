@@ -17,6 +17,7 @@ test('checking update name on project', () => {
 test('checking update todos on project', () => {
   const newProject = new Project('newProject');
   const newTodo = new Todo('todo1');
+  const jsonTodo = JSON.stringify(newTodo);
   newProject.updateTodos(newTodo);
-  expect(newProject.todos).toEqual(["{\"title\":\"todo1\"}"]);
-}); 
+  expect(newProject.todos[0]).toEqual(jsonTodo);
+});

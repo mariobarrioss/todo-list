@@ -1,6 +1,6 @@
 import Todo from '../todo';
 
-test('expect the todo object to br of type todo', () => {
+test('expect the todo object to be of type todo', () => {
   const newTodo = new Todo('todo');
   const t = newTodo instanceof Todo;
   expect(t).toEqual(true);
@@ -14,7 +14,7 @@ test('testing update title function', () => {
 
 test('testing update description function', () => {
   const newTodo = new Todo();
-  newTodo.updateDescription("description");
+  newTodo.updateDescription('description');
   expect(newTodo.description).toEqual('description');
 });
 
@@ -29,4 +29,3 @@ test('testing update priority function', () => {
   newTodo.updatePriority('medium');
   expect(newTodo.priority).toEqual('medium');
 });
-
