@@ -75,7 +75,7 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-  A huge thanks to the webpack team for making available mordern tooling for javascript.
+  A huge thanks to the webpack team for making available modern tooling for javascript.
 
 ## 📝 License
 
