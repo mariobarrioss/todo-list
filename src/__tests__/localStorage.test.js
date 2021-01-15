@@ -3,8 +3,19 @@ import {
   retrieveProjects,
   updateProject,
   deleteProject,
+  storeProjectList,
 } from '../localStorage';
 import Project from '../project';
+
+test('storeProjectList should create a projects Storage object', () => {
+  storeProjectList();
+  expect(localStorage.getItem('projects')).toBeTruthy();
+});
+
+test('checkDefaultProject should add a default project object if projectList is empty within localStorage module', () => {
+  const projectList = retrieveProjects();
+  expect(projectList).toEqual([{ name: 'default', todos: [] }]);
+});
 
 test('addProject should add new project object to array', () => {
   const projectList = retrieveProjects();
